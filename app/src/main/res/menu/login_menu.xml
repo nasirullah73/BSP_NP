@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_sync"
+        android:icon="@drawable/ic_baseline_sync_white"
+        android:title="Sync Online"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_sever"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Server"
+        app:showAsAction="always"/>
+
+</menu>

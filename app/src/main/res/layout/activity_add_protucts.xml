@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".screen.AddProtuctsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Create Order"
+            android:background="@color/purple_700"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/H2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="Add Detail"
+                android:includeFontPadding="false"
+                android:maxLines="2" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:layout_marginTop="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/Name_input"
+                    android:layout_width="0dp"
+                    android:layout_weight="7"
+                    android:maxLines="2"
+                    style="@style/Body_black"
+                    android:hint="Product Name"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="5dp"
+                    android:textAllCaps="true"
+                    android:inputType="textCapCharacters"
+                    android:layout_marginEnd="10dp"
+                    android:nextFocusForward="@id/qty_input"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:paddingLeft="5dp" />
+
+
+                <EditText
+                    android:id="@+id/qty_input"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="5dp"
+                    style="@style/Body_black"
+                    android:hint="QTY"
+                    android:nextFocusForward="@id/Name_input"
+                    android:focusable="true"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:importantForAutofill="no" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="5dp">
+
+                <ImageButton
+                    android:id="@+id/ok"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_check_circle_24"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
+                    android:layout_margin="5dp"/>
+                <ImageButton
+                    android:id="@+id/cancel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_baseline_cancel_24_red"
+                    android:background="@color/white"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/proList" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/total_layout"
+                android:visibility="gone"
+                android:layout_marginTop="5dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/LightGrey"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:text="Text"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:id="@+id/text_total"
+                />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Order"
+                android:backgroundTint="@color/purple_700"
+                android:layout_marginTop="10dp"
+                android:minHeight="50dp"/>
+
+        </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
