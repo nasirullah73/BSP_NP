@@ -1,0 +1,91 @@
+PL/SQL Developer Report
+
+[SQL]
+SELECT M.TRANSDATE "Invoice Date",M.TRANSNO "Invoice Number",M.CUSTOMERID "Customer Code",C.ORGNAME "Customer Name",SUM(D.NET_AMT) "Total Invoice Value"  
+FROM SALE_MASTER M,SALE_DETAIL D,CUSTOMERS C
+ WHERE M.TRANSNO=D.TRANSNO
+   AND M.CUSTOMERID=C.CUSTOMERID
+   AND D.COMPANY_ID=&COMP
+   AND M.TRANSDATE BETWEEN &F_DATE AND &T_DATE
+GROUP BY M.TRANSDATE,M.TRANSNO,M.CUSTOMERID,C.ORGNAME
+ORDER BY 1,2;
+
+[Options]
+Connect=False
+Username=
+Password=2586
+Database=
+ConnectAs=
+LockMode=0
+LockedPassword=2327
+BkgColor=-16777211
+BkgImage=
+FormLayout=False
+OnlyNBSP=False
+LeftMargin=0
+TopMargin=0
+PageBreak=0
+AddSQL=False
+HandleTags=True
+
+[Styles]
+
+{Title}
+Enabled=True
+Name=Report Title
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Param}
+Enabled=True
+Name=Variables
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Table}
+Enabled=True
+Name=Tabular Tables
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Form}
+Enabled=True
+Name=Form Tables
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Field}
+Enabled=True
+Name=Default Field
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+
+
+[CSS]
+

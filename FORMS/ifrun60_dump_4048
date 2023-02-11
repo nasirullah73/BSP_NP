@@ -1,0 +1,33 @@
+[02/07/18 12:19:35 Pakistan Standard Time]::Client Status [ConnId=0, PID=4048]
+	>> ERROR: Abnormal termination, Error Code: C0000005 ACCESS_VIOLATION
+
+======================= STACK DUMP =======================
+
+Fault address:  5DF5FB20 01:0006EB20
+Module: C:\orant\BIN\ifr60.dll
+
+System Information:
+Operating System: Windows NT Version 6.1 Build 7601 Service Pack 1
+Command line: "C:\orant\BIN\ifrun60.EXE" "D:\BSP\FORMS\LOGIN.fmx"
+FORM/BLOCK/FIELD: S_14:BLOCK3.GRPID
+Last Trigger: KEY-NEXT-ITEM - (Successfully Completed)
+Msg: <NULL>
+Last Builtin: GO_ITEM - (Successfully Completed)
+
+Registers:
+EAX:00000000
+EBX:00377890
+ECX:FFFFFFFF
+EDX:00000003
+ESI:00000000
+EDI:00000000
+CS:EIP:0023:5DF5FB20
+SS:ESP:002B:0018E2F0  EBP:0558C0D8
+DS:002B  ES:002B  FS:0053  GS:002B
+Flags:00010246
+
+
+Call stack:
+Address   Frame
+5DF5FB20  0018E3D8  exiterr
+

@@ -1,0 +1,116 @@
+PL/SQL Developer Report
+
+[SQL]
+SELECT PRD.PRODNAME "Product", 'NOOR PHARMA' "DIST NAME", 'FSD' "Branch Name",
+TRANSNO "Invoice Number",A.CUSTOMERID "CUSTOMER/ POP CODE",	CST.Orgname "Customer Name",CST.ADDRESS||' - '||REG.REGIONNAME "Address",					DECODE(CST.CATERY,'RETAILER',908,'DOCTOR',916,'INSTITUTION',918,'WHOLESALER',915,'CHAIN',1313,'LMT',907,908)  "Channel (As Per ISPARTAN)" ,
+To_Char(TRANSDATE,'DD-MM-YY') "Date of INvoice (DD-MM-YY)",
+BATCH_NO "Batch #", SALE_QTY "Quantity (Units) sold", Null "Invoice Receiving", CST.MOBILE_NO "POP Contact Number"
+
+FROM 
+(
+SELECT  sd.company_id, sd.PRODUCTID, SM.TRANSNO, SM.CUSTOMERID ,SM.TRANSDATE,BTCH.BATCH_NO ,SBTCH.QTY SALE_QTY
+FROM SALE_MASTER SM, SALE_DETAIL SD,S_STOCK_BATCH SBTCH, BATCH BTCH
+WHERE SM.TRANSNO=SD.TRANSNO
+AND SD.PRODUCTID=&PRODUCTID AND SD.COMPANY_ID=&COMPANYID
+AND SM.TRANSDATE BETWEEN TO_DATE(&F_DATE,'DD-MON-RR') AND TO_DATE(&T_DATE,'DD-MON-RR')
+ AND (BTCH.COMPCODE = SD.COMPCODE)
+ AND (BTCH.UNITNO =  SD.UNITNO)
+ AND (BTCH.COMPANY_ID = SD.COMPANY_ID)
+ AND (BTCH.PRODUCTID = SD.PRODUCTID)
+ AND (SBTCH.S_SRNO = SD.SRNO)
+ AND (SBTCH.B_ENTRYNO = BTCH.ENTRYNO)
+ AND (SBTCH.QTY > 0)
+
+UNION ALL
+
+SELECT sd.company_id,sd.PRODUCTID, SM.TRANSNO, SM.CUSTOMERID ,SM.TRANSDATE,SD.BATCH_NO,SD.SALE_QTY*-1 
+FROM RETURN_MASTER SM, RETURN_DETAIL SD
+WHERE SM.TRANSNO=SD.TRANSNO
+AND SD.PRODUCTID=&PRODUCTID AND SD.COMPANY_ID=&COMPANYID
+AND SM.TRANSDATE BETWEEN TO_DATE(&F_DATE,'DD-MON-RR') AND TO_DATE(&T_DATE,'DD-MON-RR')
+) A, CUSTOMERS  CST, PRODUCTS PRD,REGION REG
+WHERE A.CUSTOMERID=CST.CUSTOMERID
+AND A.PRODUCTID=PRD.PRODUCTID
+and a.company_id=prd.company_id
+AND CST.REGIONID=REG.REGIONID
+ORDER BY 5,4;
+
+[Options]
+Connect=False
+Username=
+Password=2476
+Database=
+ConnectAs=
+LockMode=0
+LockedPassword=2617
+BkgColor=-16777211
+BkgImage=
+FormLayout=False
+OnlyNBSP=False
+LeftMargin=0
+TopMargin=0
+PageBreak=0
+AddSQL=False
+HandleTags=True
+
+[Styles]
+
+{Title}
+Enabled=True
+Name=Report Title
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Param}
+Enabled=True
+Name=Variables
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Table}
+Enabled=True
+Name=Tabular Tables
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Form}
+Enabled=True
+Name=Form Tables
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+{Field}
+Enabled=True
+Name=Default Field
+Description=
+Style=
+HeaderStyle=
+Align=0
+Break=0
+Function=0
+Format=
+
+
+
+[CSS]
+
